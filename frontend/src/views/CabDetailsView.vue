@@ -210,6 +210,8 @@ export default {
 			}	
 			
 			this.getCabs();
+			this.formDetails.cabName = '';
+			this.formDetails.pricePerMinute = '';
 			this.$refs.editModal.hide();
 		},
 		async deleteCab(cabId) {

@@ -88,7 +88,6 @@ class TripTimeAPI(Resource):
         destination = args.get("destination", None)
 
         time = calculateTime(source, destination)
-        print(time)
         return {"time": time}, 200
 
 
@@ -208,8 +207,12 @@ class CabDetailsAPI(Resource):
         cabName = args.get("cabName", None)
         pricePerMinute = args.get("pricePerMinute", None)
 
-        checkCabExists = db.session.query(Cabs).filter(Cabs.cabName == cabName).first()
-        if checkCabExists:
+        checkCabExists = (
+            db.session.query(Cabs)
+            .filter(Cabs.cabName == cabName)
+            .first()
+        )
+        if checkCabExists and checkCabExists.cabId != cabId:
             return {}, 400
 
         cab = db.session.query(Cabs).filter(Cabs.cabId == cabId).first()
