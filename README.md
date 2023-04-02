@@ -57,7 +57,7 @@ This command compiles and serves your project, and you should see a message indi
 - Python 3.x installed on your computer
 - A code editor of your choice (e.g. Visual Studio Code)
 
-#### Step 1: Clone the repository
+#### Step 1: Clone the repository (Skip, if already done)
 Clone the repository from GitHub by running the following command in your terminal:
 ```
 git clone https://github.com/Aakarshit-Dhuria/Cab-System-Scaler-Project.git
@@ -103,14 +103,16 @@ The backend should now be accessible at http://localhost:8000/
 - Python 3.x installed on your computer
 - A code editor of your choice (e.g. Visual Studio Code)
 
-#### Step 1: Clone the repository
+#### Step 1: Clone the repository (Skip, if already done)
 Clone the repository from GitHub by running the following command in your terminal:
 ```
 git clone https://github.com/your-username/cab-system.git
 ```
 
 #### Step 2: Navigate to the project directory:
-Navigate to the project directory by running cd backend:
+```
+cd Cab-System-Scaler-Project
+```
 ```
 cd backend
 ```
