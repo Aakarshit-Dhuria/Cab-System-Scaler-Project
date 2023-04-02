@@ -30,7 +30,9 @@ git clone https://github.com/Aakarshit-Dhuria/Cab-System-Scaler-Project.git
 ```
 
 #### Step 2: Navigate to the project directory:
-Navigate to the project directory by running cd frontend:
+```
+cd Cab-System-Scaler-Project
+```
 ```
 cd frontend
 ```
@@ -62,7 +64,9 @@ git clone https://github.com/Aakarshit-Dhuria/Cab-System-Scaler-Project.git
 ```
 
 #### Step 2: Navigate to the project directory:
-Navigate to the project directory by running cd backend:
+```
+cd Cab-System-Scaler-Project
+```
 ```
 cd backend
 ```
