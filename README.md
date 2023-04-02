@@ -116,13 +116,20 @@ cd backend
 ```
 
 #### Step 3: Run these two commands:
+This command sets up the whole environment of the application:
 ```
 sh local_setup.sh
 ```
+This command runs the application:
 ```
 sh local_run.sh
 ```
-These two files contain all the required commands to be run for setting up and running the backend.
+
+#### Step 4: Run the local mail server: (Optional)
+```
+sh local_mailhog.sh
+```
+The mail server will run at http://localhost:8025/
 
 The backend should now be accessible at http://localhost:8000/
 
