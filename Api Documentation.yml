@@ -1,0 +1,279 @@
+openapi: 3.0.0
+info:
+  title: Cab Booking System
+  version: 1.0.0
+  description: >-
+    This is an API documentation for Flask RestFul API made for my Cab Booking System Project.
+    <h2>ER Diagram</h2> 
+    <img
+    src="https://mermaid.ink/img/pako:eNp9VMFuhCAQ_RVCsrf1Bzy3vTRNNunVxBAZLSmChWGbjfrvBXWrq7BcNPMeM28eMD2tNAeaUzAvgjWGtYUiy1r_0LDqGwzp19C8hEJoPCA4ubzvQYtGqIYo1kIC4mArIzoUWiUYS-USb10qiQVE_02gklks5yw8pd5ZX8G38PbQwnjsf9RZNgwTn-SkoAXdmBSiO4Oe2LPIC5uOBi0gtEzIKNIxa3-14fFyrEJxjaesbemU-BG1ABMlTH7tE0SsGIYs0z2RulmcWCk-lvDBI2XaCxQtWGRtR6LwlUkXb0ppBBuveL8_u9PdNHQ6zecZGvJna7SEMgTsoS_PXNH-Ib477G2pHTplOFLGRJmtrJSgp1IuRynRd_mIRR9mkEnPtAXj7yX3M2MqXFD8Ap-JBnUcauYkBpGB6jrOEF65QG1oXjNp4UyZQ_15UxXN0Ti4k5bp88-CadPHPJymGTX-AUqrTs0"/>
+  
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/AAKARSHITDHURIA/Scaler_Project/1.0.0
+  - url: http://127.0.0.1:8000/
+paths:
+  '/api/add-booking':
+    summary: End point to add a new cab booking.
+    description: This endpoint can be used to book a new cab based on the cab chosen, user email and the time taken to reach the destination.
+  
+    post:
+      description: Operation to add a new cab booking.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: booking object
+              type: object
+              properties:
+                userEmail:
+                  type: string
+                  example: aakarshit@gmail.com
+                cabName:
+                  type: string
+                  example: Prime
+                tripTime:
+                  type: string
+                  example: 25
+      responses:
+        '201':
+          description: Succefully Created.
+        '400':
+          description: Bad Request
+        '404':
+          description: Resource you requested to update not found.
+        '500':
+          description: Internal server error.
+          
+  '/api/get-time':
+    summary: End point to get the trip time.
+    description: This endpoint can be used to get the shortest trip time between the source and the destination.
+  
+    post:
+      description: Operation to get the trip time.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: trip time object
+              type: object
+              properties:
+                source:
+                  type: string
+                  example: A
+                destination:
+                  type: string
+                  example: D
+                
+      responses:
+        '201':
+          description: Succefully Created.
+        '400':
+          description: Bad Request
+        '404':
+          description: Resource you requested to update not found.
+        '500':
+          description: Internal server error.
+          
+  '/api/cabs':
+    summary: End point to get the cab details.
+    description: This endpoint can be used to get details of all the cabs in the system.
+    
+    get:
+      description: Operation to get cab details.
+  
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                title: cab object
+                type: object
+                properties:
+                  cabId: 
+                    type: integer
+                    example: 1
+                  cabName:
+                    type: string
+                    example: ali
+                  pricePerMinute:
+                    type: integer
+                    example: 15
+                  available:
+                    type: boolean
+                    example: true
+        '400':
+          description: Bad Request.
+        '401':
+          description: Unauthorized Access
+        '404':
+          description: Resource not found.
+        '500':
+          description: Internal Server Error.
+          
+    post:
+      description: Operation to add a new cab in the system.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: cab object
+              type: object
+              properties:
+                cabName:
+                  type: string
+                  example: ali
+                pricePerMinute:
+                  type: integer
+                  example: 15
+                
+      responses:
+        '201':
+          description: Succefully Created.
+        '400':
+          description: Bad Request
+        '404':
+          description: Resource you requested to update not found.
+        '500':
+          description: Internal server error.
+  
+  '/api/cabs/{cabId}':
+    parameters:
+        - in: path
+          name: cabId
+          required: true
+          schema:
+            type: integer
+            example: 1
+    summary: End point to get the cab details.
+    description: This endpoint can be used to get the details of a particular cab based on the cabId parameter passed in the endpoint.
+    
+    get:
+      description: Operation to get cab details.
+  
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                title: cab object
+                type: object
+                properties:
+                  cabId: 
+                    type: integer
+                    example: 1
+                  cabName:
+                    type: string
+                    example: ali
+                  pricePerMinute:
+                    type: integer
+                    example: 15
+                  available:
+                    type: boolean
+                    example: true
+        '400':
+          description: Bad Request.
+        '401':
+          description: Unauthorized Access
+        '404':
+          description: Resource not found.
+        '500':
+          description: Internal Server Error.
+  
+    put:
+      description: Operation to update cab details.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cabName:
+                  type: string
+                  example: Premier
+                pricePerMinute:
+                  type: integer
+                  example: 20
+                  
+      responses:
+        '200':
+          description: Successfully updated.
+          content:
+            application/json:
+              schema:
+                title: cab object
+                type: object
+                properties:
+                  cabId: 
+                    type: integer
+                    example: 1
+                  cabName:
+                    type: string
+                    example: ali
+                  pricePerMinute:
+                    type: integer
+                    example: 15
+                  available:
+                    type: boolean
+                    example: true
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized Access
+        '404':
+          description: Resource you requested to update not found.
+        '500':
+          description: Internal server error.
+    
+    delete:
+      description: Operation to delete a cab.
+      responses:
+        '200':
+          description: Successfully deleted.
+        '400':
+          description: Bad Request.
+        '401':
+          description: Unauthorized access.
+        '404':
+          description: User does not exist
+        '500':
+          description: Internal server error.
+    
+  '/api/available-cabs':
+    summary: End point to get the available cabs.
+    description: This endpoint can be used to get details of all the available cabs in the system.
+    
+    get:
+      description: Operation to get available cab details.
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                title: cab object
+                type: object
+                properties:
+                  cabId: 
+                    type: integer
+                    example: 1
+                  cabName:
+                    type: string
+                    example: ali
+                  pricePerMinute:
+                    type: integer
+                    example: 15
+                  available:
+                    type: boolean
+                    example: true
+        '400':
+          description: Bad Request.
+        '401':
+          description: Unauthorized Access
+        '404':
+          description: Resource not found.
+        '500':
+          description: Internal Server Error.
