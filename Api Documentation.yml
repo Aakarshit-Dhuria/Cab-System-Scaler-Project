@@ -4,14 +4,8 @@ info:
   version: 1.0.0
   description: >-
     This is an API documentation for Flask RestFul API made for my Cab Booking System Project.
-    <h2>ER Diagram</h2> 
-    <img
-    src="https://mermaid.ink/img/pako:eNp9VMFuhCAQ_RVCsrf1Bzy3vTRNNunVxBAZLSmChWGbjfrvBXWrq7BcNPMeM28eMD2tNAeaUzAvgjWGtYUiy1r_0LDqGwzp19C8hEJoPCA4ubzvQYtGqIYo1kIC4mArIzoUWiUYS-USb10qiQVE_02gklks5yw8pd5ZX8G38PbQwnjsf9RZNgwTn-SkoAXdmBSiO4Oe2LPIC5uOBi0gtEzIKNIxa3-14fFyrEJxjaesbemU-BG1ABMlTH7tE0SsGIYs0z2RulmcWCk-lvDBI2XaCxQtWGRtR6LwlUkXb0ppBBuveL8_u9PdNHQ6zecZGvJna7SEMgTsoS_PXNH-Ib477G2pHTplOFLGRJmtrJSgp1IuRynRd_mIRR9mkEnPtAXj7yX3M2MqXFD8Ap-JBnUcauYkBpGB6jrOEF65QG1oXjNp4UyZQ_15UxXN0Ti4k5bp88-CadPHPJymGTX-AUqrTs0"/>
   
 servers:
-  # Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/AAKARSHITDHURIA/Scaler_Project/1.0.0
   - url: http://127.0.0.1:8000/
 paths:
   '/api/add-booking':

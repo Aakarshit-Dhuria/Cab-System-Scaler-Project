@@ -78,6 +78,7 @@
 										class="block w-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 										v-model="formDetails.source"
 										placeholder="Pick up location"
+										required
 									>
 										<option
 											value=""
@@ -105,6 +106,7 @@
 										id="type"
 										class="block w-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 										v-model="formDetails.destination"
+										required
 									>
 										<option
 											value=""
@@ -129,8 +131,10 @@
 							<div class="mb-4">
 								<input
 									placeholder="Email"
+									type="email"
 									class="block w-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
 									v-model="formDetails.userEmail"
+									required
 								/>
 							</div>
 							<div v-if="availableCabs" class="flex mt-4">
@@ -269,7 +273,7 @@ export default {
 			this.formDetails.source = '';
 			this.formDetails.destination = '';
 			this.tripTime = '';
-
+			this.selectedCab = '';
 			this.getAvailableCabs();
 		},
 
@@ -302,7 +306,6 @@ export default {
 				this.cities = null;
 			}
 
-			console.log(this.cities);
 		},
 
 		async getAvailableCabs() {

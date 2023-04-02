@@ -177,6 +177,8 @@ export default {
 
 			if (response.ok) {
 				alert('Cab added successfully.');
+			}else if(response.status == 400) {
+				alert('There already exists a cab with this name.')	
 			}
 
 			this.getCabs();
@@ -192,31 +194,37 @@ export default {
 		async editCab(event) {
 			event.preventDefault();
 			let cabId = this.formDetails.cabId;
-			console.log(cabId, this.formDetails);
 
-			await fetch(`${ApiUrl}/cabs/${cabId}`, {
+			let response = await fetch(`${ApiUrl}/cabs/${cabId}`, {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(this.formDetails),
-			})
-				.then((response) => response.json())
-				.then((response) => console.log(response));
-			alert('Cab updated successfully');
+			});
+
+			if(response.ok){
+				alert('Cab updated successfully');
+			}else if(response.status == 400){
+				alert('There already exists a cab with this name.')
+			}	
+			
 			this.getCabs();
 			this.$refs.editModal.hide();
 		},
 		async deleteCab(cabId) {
-			await fetch(`${ApiUrl}/cabs/${cabId}`, {
+			let response = await fetch(`${ApiUrl}/cabs/${cabId}`, {
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 			})
-				.then((response) => response.json())
-				.then((response) => console.log(response));
-			alert('Cab deleted successfully');
+			if(response.ok){
+				alert('Cab deleted successfully');
+			}else if(response.status == 400){
+				alert('There is an active booking for this cab.')
+			}
+			
 			this.getCabs();
 		},
 	},

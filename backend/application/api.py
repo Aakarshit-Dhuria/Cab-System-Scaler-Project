@@ -33,6 +33,7 @@ class CitiesAPI(Resource):
 INF = sys.maxsize
 V = len(findAllCities())
 
+
 def calculateTime(source, destination):
     pq = []
     heapq.heappush(pq, (0, source))
@@ -107,7 +108,7 @@ def updateAvailability():
             .first()
         )
         currentCab.available = True
-        # db.session.delete(completedBookings[i])
+        db.session.delete(completedBookings[i])
 
     db.session.commit()
 
@@ -207,6 +208,10 @@ class CabDetailsAPI(Resource):
         cabName = args.get("cabName", None)
         pricePerMinute = args.get("pricePerMinute", None)
 
+        checkCabExists = db.session.query(Cabs).filter(Cabs.cabName == cabName).first()
+        if checkCabExists:
+            return {}, 400
+
         cab = db.session.query(Cabs).filter(Cabs.cabId == cabId).first()
         if cabName is not None:
             cab.cabName = cabName
@@ -228,6 +233,10 @@ class CabDetailsAPI(Resource):
         if pricePerMinute is None:
             return {"message": "Please provide a price per minute for this cab."}, 400
 
+        checkCabExists = db.session.query(Cabs).filter(Cabs.cabName == cabName).first()
+        if checkCabExists:
+            return {}, 400
+
         newCab = Cabs(cabName=cabName, pricePerMinute=pricePerMinute, available=True)
 
         db.session.add(newCab)
@@ -236,6 +245,10 @@ class CabDetailsAPI(Resource):
 
     @marshal_with(cabFields)
     def delete(self, cabId):
+        bookings = db.session.query(Bookings).filter(Bookings.cabId == cabId).all()
+        if bookings:
+            return {}, 400
+
         cab = db.session.query(Cabs).filter(Cabs.cabId == cabId).first()
         db.session.delete(cab)
         db.session.commit()
