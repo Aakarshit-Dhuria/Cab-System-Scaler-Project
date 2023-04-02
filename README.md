@@ -26,7 +26,7 @@ Backend: Flask(Python), SQLite3 (database)
 #### Step 1: Clone the repository
 Clone the repository from GitHub by running the following command in your terminal:
 ```
-git clone https://github.com/your-username/cab-system.git
+https://github.com/Aakarshit-Dhuria/Cab-System-Scaler-Project.git
 ```
 
 #### Step 2: Navigate to the project directory:
@@ -58,7 +58,7 @@ This command compiles and serves your project, and you should see a message indi
 #### Step 1: Clone the repository
 Clone the repository from GitHub by running the following command in your terminal:
 ```
-git clone https://github.com/your-username/cab-system.git
+https://github.com/Aakarshit-Dhuria/Cab-System-Scaler-Project.git
 ```
 
 #### Step 2: Navigate to the project directory:
